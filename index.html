@@ -4,34 +4,38 @@
 	<script>
 		// edit for sort order 
 		var SenderListe = {
-			'ARD' : 'https://mcdn.daserste.de/daserste/de/master.m3u8',
-			'ZDF' : 'https://zdf1314-lh.akamaihd.net/i/de14_v1@392878/master.m3u8',
-			'ARTE' : 'https://artelive-lh.akamaihd.net/i/artelive_de@393591/master.m3u8',
-			'Phoenix' : 'https://zdf0910-lh.akamaihd.net/i/de09_v1@392871/master.m3u8',
-			'3sat' : 'https://zdf0910-lh.akamaihd.net/i/dach10_v1@392872/master.m3u8',
-			'RBB' : 'https://rbblive-lh.akamaihd.net/i/rbb_berlin@144674/master.m3u8',			
-			'NDR' : 'https://ndrfs-lh.akamaihd.net/i/ndrfs_hh@430231/master.m3u8',
-			'WDR' : 'https://wdrfsgeo-lh.akamaihd.net/i/wdrfs_geogeblockt@530016/master.m3u8',
-			'BR' : 'https://brlive-lh.akamaihd.net/i/bfsnord_germany@119898/master.m3u8',
-			'HR' : 'https://hrlive1-lh.akamaihd.net/i/hr_fernsehen@75910/master.m3u8',
-			'MDR' : 'https://mdrsnhls-lh.akamaihd.net/i/livetvmdrsachsen_de@513998/master.m3u8',
-			'SR' : 'https://srlive24-lh.akamaihd.net/i/sr_universal02@107595/master.m3u8',
-			'SWR' : 'https://swrbw-lh.akamaihd.net/i/swrbw_live@196738/master.m3u8',
-			'KiKa' : 'https://kikade-lh.akamaihd.net/i/livetvkika_de@450035/master.m3u8',
-			'ONE' : 'https://onelivestream-lh.akamaihd.net/i/one_livestream@568814/master.m3u8',
-			'alpha' : 'https://brlive-lh.akamaihd.net/i/bralpha_germany@119899/master.m3u8',
-			'Tagesschau24' : 'https://tagesschau-lh.akamaihd.net/i/tagesschau_1@119231/master.m3u8',
-			'ZDFinfo' : 'https://zdf1112-lh.akamaihd.net/i/de12_v1@392882/master.m3u8',
-			'ZDFneo' : 'https://zdf1314-lh.akamaihd.net/i/de13_v1@392877/master.m3u8',
-			'DW' : 'https://dwstream72-lh.akamaihd.net/i/dwstream72_live@123556/master.m3u8',
-			'NHK' : 'https://nhkworld.webcdn.stream.ne.jp/www11/nhkworld-tv/global/263941/live_wa_s.m3u8',
-			'AlJazeera' : 'https://english.streaming.aljazeera.net/aljazeera/english2/index255.m3u8',
-			'RussiaToday' : 'https://rt-news.secure.footprint.net/1103.m3u8',
-			'SkySportNews' : 'https://eventhlshttps-i.akamaihd.net/hls/live/263645/ssn-hd-https/indexvideo-3400.m3u8',
-			'DELUXE' : 'https://streaming-02.mivitec.net/live/smil:test.smil/playlist.m3u8',
-			'WELT' : 'https://live2weltcms-lh.akamaihd.net/i/Live2WeltCMS_1@444563/master.m3u8',
-			'ServusTV' : 'https://rbmn-live.akamaized.net/hls/live/2002830/geoSTVDEweb/master.m3u8',
-            'TASTEMADE' : 'https://amagi-primary.akamaized.net/out/v1/3f7bf105c018444dbc8f74a3a283afaf/index.m3u8'	
+			'ARD' : 'https://derste247liveint.akamaized.net/hls/live/662735/daserste_int/master.m3u8',
+			'ZDF' : 'https://zdf-hls-15.akamaized.net/hls/live/2016498/de/veryhigh/master.m3u8',
+			'ARTE' : 'https://artesimulcast.akamaized.net/hls/live/2030993/artelive_de/master.m3u8',
+			'Phoenix' : 'https://zdf-hls-19.akamaized.net/hls/live/2016502/de/veryhigh/master.m3u8',
+			'3sat' : 'https://zdf-hls-18.akamaized.net/hls/live/2016501/dach/high/master.m3u8',
+			'RBB' : 'https://rbb-hls-berlin.akamaized.net/hls/live/2017824/rbb_berlin/index.m3u8',			
+			'NDR' : 'https://mcdn.ndr.de/ndr/hls/ndr_fs/ndr_nds/master.m3u8',
+			'WDR' : 'https://mcdn.wdr.de/wdr/wdrfs/de/master.m3u8',
+			'BR' : 'https://mcdn.br.de/br/fs/bfs_sued/hls/de/master.m3u8',
+			'HR' : 'https://hrhlsde.akamaized.net/hls/live/2024526/hrhlsde/index.m3u8',
+			'MDR' : 'https://mdrtvsnhls.akamaized.net/hls/live/2016928/mdrtvsn/master.m3u8',
+			'SWR' : 'https://swrbwd-hls.akamaized.net/hls/live/2018672/swrbwd/master.m3u8',
+			'KiKa' : 'https://kikageohls.akamaized.net/hls/live/2022693/livetvkika_de/master.m3u8',
+			'ONE' : 'https://mcdn.one.ard.de/ardone/hls/master.m3u8',
+			'alpha' : 'https://mcdn.br.de/br/fs/ard_alpha/hls/de/master.m3u8',
+			'Tagesschau24' : 'https://tagesschau.akamaized.net/hls/live/2020115/tagesschau/tagesschau_1/master.m3u8',
+			'ZDFinfo' : 'https://zdf-hls-17.akamaized.net/hls/live/2016500/de/high/master.m3u8',
+			'ZDFneo' : 'https://zdf-hls-16.akamaized.net/hls/live/2016499/de/high/master.m3u8',
+			'DW Deutsch' : 'https://dwamdstream102.akamaized.net/hls/live/2015525/dwstream102/index.m3u8',
+			'DW Plus' : 'https://dwamdstream110.akamaized.net/hls/live/2017971/dwstream110/index.m3u8',
+			'DW Englisch' : 'https://dwamdstream102.akamaized.net/hls/live/2015525/dwstream102/index.m3u8',
+			'Euronews' : 'https://rakuten-euronews-5-de.samsung.wurl.tv/manifest/playlist.m3u8',
+			'CNN Europe' : 'https://cnn-cnninternational-1-eu.rakuten.wurl.tv/playlist.m3u8',
+			'DasDing' : 'https://swrdasdingvr-hls.akamaized.net/hls/live/2018681/dasdingvr/master.m3u8',
+			'MTV' : 'https://0d26a00dfbb1.airspace-cdn.cbsivideo.com/mtvg18ef/master/master_5000.m3u8',
+			'DELUXE MUSIC' : 'https://sdn-global-live-streaming-packager-cache.3qsdn.com/13456/13456_264_live.m3u8',
+			'DELUXE MUSIC DANCE' : 'https://sdn-global-live-streaming-packager-cache.3qsdn.com/64733/64733_264_live.m3u8',
+			'Al Jazeera English' : 'https://live-hls-web-aje.getaj.net/AJE/index.m3u8',
+			'Bundestag 1' : 'https://bttv-live-z.r53.cdn.tv1.eu/13014bundestag-hk1/_definst_/live/video/hk1_de.smil/playlist.m3u8',
+			'Bundestag 2' : 'https://bttv-live-z.r53.cdn.tv1.eu/13014bundestag-hk2/_definst_/live/video/hk2_de.smil/playlist.m3u8',
+			'muenchen.tv' : 'https://muenchentv.iptv-playoutcenter.de/muenchentv/muenchentv.stream_1/playlist.m3u8',
+			'ErzTV' : 'https://5acade5fc0c29.streamlock.net/kabeljournal/live2020.stream/chunklist_w585202401.m3u8'
 		};
 		
 		var SenderIndex = 0;
@@ -125,7 +129,7 @@
 
 	<div class="row pt-2 d-none d-lg-block">
 		<div class="col-sm">
-			<small class="text-muted">Zappen: <kbd>+</kbd>/<kbd>-</kbd> | Ton: <kbd>M</kbd> | Vollbild: <kbd>F</kbd> | Sender: <kbd>S</kbd></small>
+			<small class="text-muted">Zappen: <kbd>+</kbd>/<kbd>-</kbd> | Ton: <kbd>M</kbd> | Vollbild: <kbd>F</kbd> | Sender: <kbd>S</kbd> | Externe Datenbank: <kbd><a href="https://iptv-org.github.io/" target="_blank">IP-TV Org</a></kbd></small>
 		</div>
 	</div>
 </div>
