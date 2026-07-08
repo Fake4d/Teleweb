@@ -1,15 +1,17 @@
 <!doctype html>
-<html lang="de">
+<html lang="de" data-bs-theme="dark">
 <head>
 	<script>
-		// edit for sort order 
-		var SenderListe = {
+		const TelewebVersion = 'Refresh 2026 · Stand 08.07.2026';
+
+		// edit for sort order
+		const SenderListe = {
 			'ARD' : 'https://derste247liveint.akamaized.net/hls/live/662735/daserste_int/master.m3u8',
 			'ZDF' : 'https://zdf-hls-15.akamaized.net/hls/live/2016498/de/veryhigh/master.m3u8',
 			'ARTE' : 'https://artesimulcast.akamaized.net/hls/live/2030993/artelive_de/master.m3u8',
 			'Phoenix' : 'https://zdf-hls-19.akamaized.net/hls/live/2016502/de/veryhigh/master.m3u8',
 			'3sat' : 'https://zdf-hls-18.akamaized.net/hls/live/2016501/dach/high/master.m3u8',
-			'RBB' : 'https://rbb-hls-berlin.akamaized.net/hls/live/2017824/rbb_berlin/index.m3u8',			
+			'RBB' : 'https://rbb-hls-berlin.akamaized.net/hls/live/2017824/rbb_berlin/index.m3u8',
 			'NDR' : 'https://mcdn.ndr.de/ndr/hls/ndr_fs/ndr_nds/master.m3u8',
 			'WDR' : 'https://wdrfs247.akamaized.net/hls/live/681509/wdr_msl4_fs247/index.m3u8',
 			'BR' : 'https://mcdn.br.de/br/fs/bfs_sued/hls/de/master.m3u8',
@@ -21,263 +23,253 @@
 			'Tagesschau24' : 'https://tagesschau.akamaized.net/hls/live/2020115/tagesschau/tagesschau_1/master.m3u8',
 			'ZDFinfo' : 'https://zdf-hls-17.akamaized.net/hls/live/2016500/de/high/master.m3u8',
 			'ZDFneo' : 'https://zdf-hls-16.akamaized.net/hls/live/2016499/de/high/master.m3u8',
-			'DW Deutsch' : 'https://dwamdstream102.akamaized.net/hls/live/2015525/dwstream102/index.m3u8',
 			'DW Plus' : 'https://dwamdstream110.akamaized.net/hls/live/2017971/dwstream110/index.m3u8',
 			'DW Englisch' : 'https://dwamdstream102.akamaized.net/hls/live/2015525/dwstream102/index.m3u8',
 			'DasDing' : 'https://swrdasdingvr-hls.akamaized.net/hls/live/2018681/dasdingvr/master.m3u8',
 			'DELUXE MUSIC' : 'https://sdn-global-live-streaming-packager-cache.3qsdn.com/13456/13456_264_live.m3u8',
-			'DELUXE MUSIC DANCE' : 'https://sdn-global-live-streaming-packager-cache.3qsdn.com/64733/64733_264_live.m3u8',
-			'DELUXE MUSIC RAP' : 'https://sdn-global-live-streaming-packager-cache.3qsdn.com/65183/65183_264_live.m3u8',
-			'Al Jazeera English' : 'https://live-hls-web-aje.getaj.net/AJE/index.m3u8',
-			'Bundestag 1' : 'https://bttv-live-z.r53.cdn.tv1.eu/13014bundestag-hk1/_definst_/live/video/hk1_de.smil/playlist.m3u8',
-			'Bundestag 2' : 'https://bttv-live-z.r53.cdn.tv1.eu/13014bundestag-hk2/_definst_/live/video/hk2_de.smil/playlist.m3u8',
+			'CBS News' : 'https://cbsn-us.cbsnstream.cbsnews.com/out/v1/55a8648e8f134e82a470f83d562deeca/master.m3u8',
+			'Bundestag 1' : 'https://cldf-hlsgw.r53.cdn.tv1.eu/1000153copo/hk1.m3u8',
+			'Bundestag 2' : 'https://cldf-hlsgw.r53.cdn.tv1.eu/1000153copo/hk2.m3u8',
 			'muenchen.tv' : 'https://muenchentv.iptv-playoutcenter.de/muenchentv/muenchentv.stream_1/playlist.m3u8',
-			'ErzTV' : 'https://5acade5fc0c29.streamlock.net/kabeljournal/live2020.stream/chunklist_w585202401.m3u8'
+			'ErzTV' : 'https://5acade5fc0c29.streamlock.net/kabeljournal/live2020.stream/playlist.m3u8'
 		};
-		
-		var SenderIndex = 0;
-		var SenderSelectors = [];
-		for(var Line in SenderListe){
-			SenderSelectors.push(Line);
-		}
 	</script>
 
 	<meta charset="utf-8">
-	<meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+	<meta name="viewport" content="width=device-width, initial-scale=1">
+	<meta name="theme-color" content="#000000">
+	<meta name="mobile-web-app-capable" content="yes">
 	<meta name="apple-mobile-web-app-capable" content="yes">
 	<meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
-	<link rel="apple-touch-icon" href="https://via.placeholder.com/512/017bff/ffffff?text=TV">
-	<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css" integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm" crossorigin="anonymous">
-	<link href="https://cdnjs.cloudflare.com/ajax/libs/open-iconic/1.1.1/font/css/open-iconic-bootstrap.css" rel="stylesheet">
+	<link rel="apple-touch-icon" href="pics/icon.png">
+	<link rel="icon" href="pics/icon.png" type="image/png">
+	<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.8/dist/css/bootstrap.min.css" integrity="sha384-sRIl4kxILFvY47J16cr9ZwB07vP4J8+LH7qKQnuqkuIAvNWLzeN8tE5YBujZqJLB" crossorigin="anonymous">
 
 	<title>Teleweb</title>
-	<style type="text/css">
+	<style>
 		body { background: black !important; }
-		.btn-space {margin-bottom: 10px;}
+		.btn-space { margin-bottom: 10px; }
 		.btn:focus, .btn:active { outline: none !important; box-shadow: none !important; }
+		.btn svg { width: 1.25em; height: 1.25em; vertical-align: -0.2em; }
 	</style>
-</head>	
-<body class="">
+</head>
+<body>
 
 	<div class="container pt-2">
 		<div class="row pt-4 d-block d-sm-none">
-			<div class="col-auto mr-auto">
-				<button class="btn btn-lg btn-primary btn-block" type="button" data-toggle="collapse" data-target="#SenderPanel" aria-expanded="false">
-				<div class="text" id="senderknopf-sm">s-display</div>
+			<div class="col-auto me-auto">
+				<button class="btn btn-lg btn-primary w-100" type="button" data-bs-toggle="collapse" data-bs-target="#SenderPanel" aria-expanded="false" aria-controls="SenderPanel">
+					<span id="senderknopf-sm">SENDER</span>
 				</button>
 			</div>
 		</div>
 
 		<div class="row pt-4">
 			<div class="col-sm">
-				<script src="https://cdn.jsdelivr.net/npm/hls.js@latest/dist/hls.min.js"></script>
-				<video controls autoplay muted playsinline id="video" preload="auto" class="embed-responsive embed-responsive-16by9"></video>
+				<div class="ratio ratio-16x9">
+					<video controls autoplay muted playsinline id="video" preload="auto"></video>
+				</div>
 			</div>
 		</div>
 
-	<div class="row pt-4">
-		<div class="col-auto mr-auto d-none d-sm-block">
-			<button class="btn btn-lg btn-primary" type="button" data-toggle="collapse" data-target="#SenderPanel" aria-expanded="false" aria-controls="SenderPanel">
-				<div class="text" id="senderknopf">SENDER</div>
-			</button>
-		</div>
-		
-		<div class="col-auto ml-auto">
-			<div class="btn-group btn-group-lg" role="group" aria-label="Basic example">
-				<button id="mute-video" type="button" class="btn btn-secondary">&nbsp;<span id="mute-symbol" class="oi oi-volume-off"></span>&nbsp;</button>
-				<button id="runter" type="button" class="btn btn-primary">&nbsp;<span class="oi oi-chevron-top"></span>&nbsp;</button>
-				<button id="hoch" type="button" class="btn btn-primary">&nbsp;<span class="oi oi-chevron-bottom"></span>&nbsp;</button>
+		<div class="row pt-4">
+			<div class="col-auto me-auto d-none d-sm-block">
+				<button class="btn btn-lg btn-primary" type="button" data-bs-toggle="collapse" data-bs-target="#SenderPanel" aria-expanded="false" aria-controls="SenderPanel">
+					<span id="senderknopf">SENDER</span>
+				</button>
 			</div>
-			<span id="PiPButtonSpan">
-			<button id="PiPButton" type="button" class="btn btn-lg btn-primary ">&nbsp;<span class="oi oi-external-link"></span>&nbsp;</button>
-			</span>
-		</div>
-		<div class="col-1 ml d-none d-lg-block">
-			<button id="fullscreen" type="button" class="btn btn-lg btn-primary ">&nbsp;<span class="oi oi-fullscreen-enter"></span>&nbsp;</button>
-		</div>
-	</div>
-		
-	<div class="row pt-2">
-		<div class="col-sm">
-			<div class="collapse" id="SenderPanel">
-				<div class="card bg-secondary">
-					<div class="card-body bg-dark">
 
-					
-					
-					
-					<p id="sender"></p>
+			<div class="col-auto ms-auto">
+				<div class="btn-group btn-group-lg" role="group" aria-label="Steuerung">
+					<button id="mute-video" type="button" class="btn btn-secondary" aria-label="Ton ein/aus">
+						<svg xmlns="http://www.w3.org/2000/svg" fill="currentColor" viewBox="0 0 16 16" id="symbol-leise">
+							<path d="M6.717 3.55A.5.5 0 0 1 7 4v8a.5.5 0 0 1-.812.39L3.825 10.5H1.5A.5.5 0 0 1 1 10V6a.5.5 0 0 1 .5-.5h2.325l2.363-1.89a.5.5 0 0 1 .529-.06m7.137 2.096a.5.5 0 0 1 0 .708L12.207 8l1.647 1.646a.5.5 0 0 1-.708.708L11.5 8.707l-1.646 1.647a.5.5 0 0 1-.708-.708L10.793 8 9.146 6.354a.5.5 0 1 1 .708-.708L11.5 7.293l1.646-1.647a.5.5 0 0 1 .708 0"/>
+						</svg>
+						<svg xmlns="http://www.w3.org/2000/svg" fill="currentColor" viewBox="0 0 16 16" id="symbol-laut" hidden>
+							<path d="M11.536 14.01A8.47 8.47 0 0 0 14.026 8a8.47 8.47 0 0 0-2.49-6.01l-.708.707A7.48 7.48 0 0 1 13.025 8c0 2.071-.84 3.946-2.197 5.303z"/>
+							<path d="M10.121 12.596A6.48 6.48 0 0 0 12.025 8a6.48 6.48 0 0 0-1.904-4.596l-.707.707A5.48 5.48 0 0 1 11.025 8a5.48 5.48 0 0 1-1.61 3.89z"/>
+							<path d="M8.707 11.182A4.5 4.5 0 0 0 10.025 8a4.5 4.5 0 0 0-1.318-3.182L8 5.525A3.5 3.5 0 0 1 9.025 8 3.5 3.5 0 0 1 8 10.475zM6.717 3.55A.5.5 0 0 1 7 4v8a.5.5 0 0 1-.812.39L3.825 10.5H1.5A.5.5 0 0 1 1 10V6a.5.5 0 0 1 .5-.5h2.325l2.363-1.89a.5.5 0 0 1 .529-.06"/>
+						</svg>
+					</button>
+					<button id="runter" type="button" class="btn btn-primary" aria-label="Sender zurück">
+						<svg xmlns="http://www.w3.org/2000/svg" fill="currentColor" viewBox="0 0 16 16">
+							<path fill-rule="evenodd" d="M7.646 4.646a.5.5 0 0 1 .708 0l6 6a.5.5 0 0 1-.708.708L8 5.707l-5.646 5.647a.5.5 0 0 1-.708-.708z"/>
+						</svg>
+					</button>
+					<button id="hoch" type="button" class="btn btn-primary" aria-label="Sender weiter">
+						<svg xmlns="http://www.w3.org/2000/svg" fill="currentColor" viewBox="0 0 16 16">
+							<path fill-rule="evenodd" d="M1.646 4.646a.5.5 0 0 1 .708 0L8 10.293l5.646-5.647a.5.5 0 0 1 .708.708l-6 6a.5.5 0 0 1-.708 0l-6-6a.5.5 0 0 1 0-.708"/>
+						</svg>
+					</button>
+				</div>
+				<button id="PiPButton" type="button" class="btn btn-lg btn-primary" aria-label="Bild-in-Bild">
+					<svg xmlns="http://www.w3.org/2000/svg" fill="currentColor" viewBox="0 0 16 16">
+						<path d="M0 3.5A1.5 1.5 0 0 1 1.5 2h13A1.5 1.5 0 0 1 16 3.5v9a1.5 1.5 0 0 1-1.5 1.5h-13A1.5 1.5 0 0 1 0 12.5zM1.5 3a.5.5 0 0 0-.5.5v9a.5.5 0 0 0 .5.5h13a.5.5 0 0 0 .5-.5v-9a.5.5 0 0 0-.5-.5z"/>
+						<path d="M8 8.5a.5.5 0 0 1 .5-.5h5a.5.5 0 0 1 .5.5v3a.5.5 0 0 1-.5.5h-5a.5.5 0 0 1-.5-.5z"/>
+					</svg>
+				</button>
+			</div>
+			<div class="col-1 d-none d-lg-block">
+				<button id="fullscreen" type="button" class="btn btn-lg btn-primary" aria-label="Vollbild">
+					<svg xmlns="http://www.w3.org/2000/svg" fill="currentColor" viewBox="0 0 16 16">
+						<path d="M1.5 1a.5.5 0 0 0-.5.5v4a.5.5 0 0 1-1 0v-4A1.5 1.5 0 0 1 1.5 0h4a.5.5 0 0 1 0 1zM10 .5a.5.5 0 0 1 .5-.5h4A1.5 1.5 0 0 1 16 1.5v4a.5.5 0 0 1-1 0v-4a.5.5 0 0 0-.5-.5h-4a.5.5 0 0 1-.5-.5M.5 10a.5.5 0 0 1 .5.5v4a.5.5 0 0 0 .5.5h4a.5.5 0 0 1 0 1h-4A1.5 1.5 0 0 1 0 14.5v-4a.5.5 0 0 1 .5-.5m15 0a.5.5 0 0 1 .5.5v4a1.5 1.5 0 0 1-1.5 1.5h-4a.5.5 0 0 1 0-1h4a.5.5 0 0 0 .5-.5v-4a.5.5 0 0 1 .5-.5"/>
+					</svg>
+				</button>
+			</div>
+		</div>
 
-					            <script>
-                                var senderp = document.getElementById("sender");
-                                for (i = 0; i < SenderSelectors.length; i++) {
-						            senderp.innerHTML += ( "<button id='"+SenderSelectors[i]+"' type='button' class='btn btn-primary btn-space ' onclick='playTV("+i+");'>" + SenderSelectors[i] + "</button> "); 
-					                }
-                                
-                            
-                        
-                    </script>
-					
+		<div class="row pt-2">
+			<div class="col-sm">
+				<div class="collapse" id="SenderPanel">
+					<div class="card bg-secondary">
+						<div class="card-body bg-dark" id="sender"></div>
 					</div>
 				</div>
 			</div>
 		</div>
-	</div>
 
-	<div class="row pt-2 d-none d-lg-block">
-		<div class="col-sm">
-			<small class="text-muted">Zappen: <kbd>+</kbd>/<kbd>-</kbd> | Ton: <kbd>M</kbd> | Vollbild: <kbd>F</kbd> | Sender: <kbd>S</kbd> | Externe Datenbank: <kbd><a href="https://iptv-org.github.io/" target="_blank">IP-TV Org</a></kbd></small>
+		<div class="row pt-2 d-none d-lg-block">
+			<div class="col-sm">
+				<small class="text-body-secondary">Zappen: <kbd>+</kbd>/<kbd>-</kbd> | Ton: <kbd>M</kbd> | Vollbild: <kbd>F</kbd> | Sender: <kbd>S</kbd> | Externe Datenbank: <kbd><a href="https://iptv-org.github.io/" target="_blank" rel="noopener">IP-TV Org</a></kbd></small>
+			</div>
+		</div>
+
+		<div class="row pt-1 pb-3">
+			<div class="col-sm">
+				<small class="text-body-secondary" id="version"></small>
+			</div>
 		</div>
 	</div>
-</div>
 
-<!-- jQuery first, then Popper.js, then Bootstrap JS -->
-<script src="https://code.jquery.com/jquery-3.2.1.slim.min.js" integrity="sha384-KJ3o2DKtIkvYIK3UENzmM7KCkRr/rE9/Qpg6aAZGJwFDMVNA/GpGFF93hXpG5KkN" crossorigin="anonymous"></script>
-<script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.12.9/umd/popper.min.js" integrity="sha384-ApNbgh9B+Y1QKtv3Rn7W3mgPxhU9K/ScQsAP7hUibX39j7fakFPskvXusvfa0b4Q" crossorigin="anonymous"></script>
-<script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/js/bootstrap.min.js" integrity="sha384-JZR6Spejh4U02d8jOt6vLEHfe/JQGiRRSQQxSfFWpi1MquVdAyjUar5+76PVCmYl" crossorigin="anonymous"></script>
-<script>
+	<script src="https://cdn.jsdelivr.net/npm/hls.js@1.6.16/dist/hls.min.js" integrity="sha384-5E8B0pTlZZJMabWpC0fyYf6OUpe15jJij34BqBAh4NXoHAlLNOjCPRrwtOXOQFAn" crossorigin="anonymous"></script>
+	<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.8/dist/js/bootstrap.bundle.min.js" integrity="sha384-FKyoEForCGlyvwx9Hj09JcYn3nv7wiPVlz7YYwJrWVcXK/BmnVDxM+D2scQbITxI" crossorigin="anonymous"></script>
+	<script>
+		document.getElementById('version').textContent = 'Teleweb ' + TelewebVersion;
 
-	$(function() {
-	  $('button').click( function() {
-		$(this).addClass('active').siblings().removeClass('active');
-	  });
-	});
-	 
-	function playTV(Selector) {
-		SenderIndex = Selector;
-		if(Hls.isSupported()){
-			hls.loadSource(SenderListe[SenderSelectors[Selector]]); 
-			hls.attachMedia(video); 
-			hls.on(Hls.Events.MANIFEST_PARSED,function() { 
-			video.play();
+		const video = document.getElementById('video');
+		const senderNamen = Object.keys(SenderListe);
+		let senderIndex = 0;
+		let hls = null;
+
+		// Senderknöpfe erzeugen
+		const senderPanel = document.getElementById('sender');
+		senderNamen.forEach((name, i) => {
+			const knopf = document.createElement('button');
+			knopf.type = 'button';
+			knopf.className = 'btn btn-primary btn-space me-1';
+			knopf.textContent = name;
+			knopf.dataset.index = i;
+			knopf.addEventListener('click', () => playTV(i));
+			senderPanel.append(knopf, ' ');
+		});
+
+		function playTV(index) {
+			senderIndex = (index + senderNamen.length) % senderNamen.length;
+			const name = senderNamen[senderIndex];
+			const url = SenderListe[name];
+
+			if (hls) {
+				hls.destroy();
+				hls = null;
+			}
+
+			if (Hls.isSupported()) {
+				hls = new Hls();
+				hls.loadSource(url);
+				hls.attachMedia(video);
+				hls.on(Hls.Events.MANIFEST_PARSED, () => video.play().catch(() => {}));
+				hls.on(Hls.Events.ERROR, (event, data) => {
+					if (!data.fatal) return;
+					if (data.type === Hls.ErrorTypes.NETWORK_ERROR) {
+						hls.startLoad();
+					} else if (data.type === Hls.ErrorTypes.MEDIA_ERROR) {
+						hls.recoverMediaError();
+					}
+				});
+			} else if (video.canPlayType('application/vnd.apple.mpegurl')) {
+				// natives HLS (Safari / iOS)
+				video.src = url;
+				video.addEventListener('canplay', () => video.play().catch(() => {}), { once: true });
+			}
+
+			lauft(name);
+			localStorage.setItem('teleweb-sender', name);
+			if ('mediaSession' in navigator) {
+				navigator.mediaSession.metadata = new MediaMetadata({ title: name, artist: 'Teleweb' });
+			}
+		}
+
+		function lauft(name) {
+			for (const knopf of senderPanel.children) {
+				knopf.classList.toggle('active', knopf.textContent === name);
+			}
+			document.getElementById('senderknopf').textContent = name;
+			document.getElementById('senderknopf-sm').textContent = name;
+		}
+
+		function hochschalten() { playTV(senderIndex + 1); }
+		function runterschalten() { playTV(senderIndex - 1); }
+
+		function leise() {
+			video.muted = !video.muted;
+			document.getElementById('symbol-leise').hidden = !video.muted;
+			document.getElementById('symbol-laut').hidden = video.muted;
+			document.getElementById('mute-video').classList.toggle('btn-primary', !video.muted);
+			document.getElementById('mute-video').classList.toggle('btn-secondary', video.muted);
+		}
+
+		function vollbild() {
+			if (document.fullscreenElement || document.webkitFullscreenElement) {
+				if (document.exitFullscreen) document.exitFullscreen();
+				else if (document.webkitExitFullscreen) document.webkitExitFullscreen();
+			} else if (video.requestFullscreen) {
+				video.requestFullscreen();
+			} else if (video.webkitRequestFullscreen) {
+				video.webkitRequestFullscreen();
+			} else if (video.webkitEnterFullscreen) {
+				// iPhone
+				video.webkitEnterFullscreen();
+			}
+		}
+
+		document.getElementById('hoch').addEventListener('click', hochschalten);
+		document.getElementById('runter').addEventListener('click', runterschalten);
+		document.getElementById('mute-video').addEventListener('click', leise);
+		document.getElementById('fullscreen').addEventListener('click', vollbild);
+
+		document.addEventListener('keydown', (e) => {
+			switch (e.key) {
+				case '+': hochschalten(); break;
+				case '-': runterschalten(); break;
+				case 'm': case 'M': leise(); break;
+				case 'f': case 'F': vollbild(); break;
+				case 's': case 'S':
+					bootstrap.Collapse.getOrCreateInstance(document.getElementById('SenderPanel')).toggle();
+					break;
+			}
+		});
+
+		// Bild-in-Bild: Standard-API (Chrome, Edge, Safari 17+) mit WebKit-Fallback (älteres Safari)
+		const pipKnopf = document.getElementById('PiPButton');
+		if (document.pictureInPictureEnabled) {
+			pipKnopf.addEventListener('click', () => {
+				if (document.pictureInPictureElement) {
+					document.exitPictureInPicture();
+				} else {
+					video.requestPictureInPicture();
+				}
 			});
-		} else if (video.canPlayType('application/vnd.apple.mpegurl')) {
-			video.src = SenderListe[SenderSelectors[Selector]];
-			video.addEventListener('canplay',function() {
-			video.play();
-  			});
-		}
-		lauft(Selector)
-	}
-
-	function leise(e){
-		if((e.type == "keydown" && e.which == 77 ) ||(e.type == "click")){
-	  		if( $("video").prop('muted') ) {
-				$("video").prop('muted', false);
-				$('#mute-symbol').addClass('oi-volume-high').removeClass('oi-volume-off');
-				$('#mute-video').addClass('btn-primary').removeClass('btn-secondary');
-			} else {
-				$("video").prop('muted', true);
-				$('#mute-symbol').addClass('oi-volume-off').removeClass('oi-volume-high');
-				$('#mute-video').addClass('btn-secondary').removeClass('btn-primary');
-	  		}
-		}
-	}
-
-	function fullscreen() {
-	  var isInFullScreen = (document.fullscreenElement && document.fullscreenElement !== null) ||
-		  (document.webkitFullscreenElement && document.webkitFullscreenElement !== null) ||
-		  (document.mozFullScreenElement && document.mozFullScreenElement !== null) ||
-		  (document.msFullscreenElement && document.msFullscreenElement !== null);
-	  var docElm = document.getElementById("video");
-	  if (!isInFullScreen) {
-		  if (docElm.requestFullscreen) {
-			  docElm.requestFullscreen();
-		  } else if (docElm.mozRequestFullScreen) {
-			  docElm.mozRequestFullScreen();
-		  } else if (docElm.webkitRequestFullScreen) {
-			  docElm.webkitRequestFullScreen();
-		  } else if (docElm.msRequestFullscreen) {
-			  docElm.msRequestFullscreen();
-		  }
-	  } else {
-		  if (document.exitFullscreen) {
-			  document.exitFullscreen();
-		  } else if (document.webkitExitFullscreen) {
-			  document.webkitExitFullscreen();
-		  } else if (document.mozCancelFullScreen) {
-			  document.mozCancelFullScreen();
-		  } else if (document.msExitFullscreen) {
-			  document.msExitFullscreen();
-		  }
-		}
-	}
-
-	function vollbild(e){
-		if((e.type == "keydown" && e.which == 70 )||(e.type == "click")){
-			fullscreen();
-		}
-	}
-
-	function lauft(Selector) {
-		SenderName = SenderSelectors[Selector];
-		$('#' + SenderName).addClass('active').siblings().removeClass('active');
-		$('#senderknopf').text(SenderName);
-		$('#senderknopf-sm').text(SenderName);
-	}	  
-	  
-	function hochschalten(e){
-	  if((e.type == "keydown" && (e.which == 187 || e.which == 107 || e.which == 171))||(e.type == "click")){
-			if(SenderIndex+1 == SenderSelectors.length ) {
-				SenderIndex = 0;
-				video.pause();
-			}else{
-				SenderIndex = SenderIndex+1;
-				video.pause();
-			}
-			playTV(SenderIndex); 
-		}
-	}
-
-	function runterschalten(e){
-	  if((e.type == "keydown" && (e.which == 189 || e.which == 109 || e.which == 173))||(e.type == "click")){
-			if(SenderIndex-1 < 0 ) {
-				SenderIndex = SenderSelectors.length-1;
-				video.pause();
-			}else{
-				SenderIndex = SenderIndex-1;
-				video.pause();
-			}
-			playTV(SenderIndex); 
-		}
-	}
-    function zeigeSender(e) {
-        if(e.type == "keydown" && e.which == 83 ){
-        $('#SenderPanel').collapse('toggle');
-        }
-    }
-
-	$('body').keydown(hochschalten);
-	$('body').keydown(runterschalten);
-	$('body').keydown(vollbild);
-	$('body').keydown(leise);
-	$('body').keydown(zeigeSender);
-	$('#hoch').click(hochschalten);
-	$('#runter').click(runterschalten);
-	$('#fullscreen').click(vollbild);
-	$('#mute-video').click(leise);
-
-	var PiP = document.getElementById('PiPButton');
-	var isMobile = navigator.userAgent.match(/(iPhone|iPod|iPad|Android|webOS|BlackBerry|IEMobile|Opera Mini)/i) || false;
-	var video = document.getElementById('video');
-	var hls = new Hls();
-	playTV(0);
-
-	if (isMobile[0] == 'iPad' || isMobile == false) {
-		// picture-in-picture
-		if (video.webkitSupportsPresentationMode && typeof video.webkitSetPresentationMode === "function") {
-			// Toggle PiP when the user clicks the button.
-			PiP.addEventListener("click", function(event) {
-				video.webkitSetPresentationMode(video.webkitPresentationMode === "picture-in-picture" ? "inline" : "picture-in-picture");
+		} else if (video.webkitSupportsPresentationMode && typeof video.webkitSetPresentationMode === 'function') {
+			pipKnopf.addEventListener('click', () => {
+				video.webkitSetPresentationMode(video.webkitPresentationMode === 'picture-in-picture' ? 'inline' : 'picture-in-picture');
 			});
 		} else {
-			PiP.disabled = true;
-			$('#PiPButton').hide();
+			pipKnopf.hidden = true;
 		}
-	} else {
-		PiP.disabled = true;
-		$('#PiPButton').hide();
-	}
-</script>
+
+		// letzten Sender wiederherstellen
+		const letzterSender = senderNamen.indexOf(localStorage.getItem('teleweb-sender'));
+		playTV(letzterSender >= 0 ? letzterSender : 0);
+	</script>
 </body>
 </html>
