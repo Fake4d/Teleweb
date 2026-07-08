@@ -2,6 +2,8 @@
 <html lang="de" data-bs-theme="dark">
 <head>
 	<script>
+		const TelewebVersion = 'Refresh 2026 · Stand 08.07.2026';
+
 		// edit for sort order
 		const SenderListe = {
 			'ARD' : 'https://derste247liveint.akamaized.net/hls/live/662735/daserste_int/master.m3u8',
@@ -21,14 +23,11 @@
 			'Tagesschau24' : 'https://tagesschau.akamaized.net/hls/live/2020115/tagesschau/tagesschau_1/master.m3u8',
 			'ZDFinfo' : 'https://zdf-hls-17.akamaized.net/hls/live/2016500/de/high/master.m3u8',
 			'ZDFneo' : 'https://zdf-hls-16.akamaized.net/hls/live/2016499/de/high/master.m3u8',
-			'DW Deutsch' : 'https://dwamdstream111.akamaized.net/hls/live/2017972/dwstream111/index.m3u8',
 			'DW Plus' : 'https://dwamdstream110.akamaized.net/hls/live/2017971/dwstream110/index.m3u8',
 			'DW Englisch' : 'https://dwamdstream102.akamaized.net/hls/live/2015525/dwstream102/index.m3u8',
 			'DasDing' : 'https://swrdasdingvr-hls.akamaized.net/hls/live/2018681/dasdingvr/master.m3u8',
 			'DELUXE MUSIC' : 'https://sdn-global-live-streaming-packager-cache.3qsdn.com/13456/13456_264_live.m3u8',
-			'DELUXE MUSIC DANCE' : 'https://sdn-global-live-streaming-packager-cache.3qsdn.com/64733/64733_264_live.m3u8',
-			'DELUXE MUSIC RAP' : 'https://sdn-global-live-streaming-packager-cache.3qsdn.com/65183/65183_264_live.m3u8',
-			'Al Jazeera English' : 'https://live-hls-web-aje.getaj.net/AJE/index.m3u8',
+			'CBS News' : 'https://cbsn-us.cbsnstream.cbsnews.com/out/v1/55a8648e8f134e82a470f83d562deeca/master.m3u8',
 			'Bundestag 1' : 'https://cldf-hlsgw.r53.cdn.tv1.eu/1000153copo/hk1.m3u8',
 			'Bundestag 2' : 'https://cldf-hlsgw.r53.cdn.tv1.eu/1000153copo/hk2.m3u8',
 			'muenchen.tv' : 'https://muenchentv.iptv-playoutcenter.de/muenchentv/muenchentv.stream_1/playlist.m3u8',
@@ -134,11 +133,19 @@
 				<small class="text-body-secondary">Zappen: <kbd>+</kbd>/<kbd>-</kbd> | Ton: <kbd>M</kbd> | Vollbild: <kbd>F</kbd> | Sender: <kbd>S</kbd> | Externe Datenbank: <kbd><a href="https://iptv-org.github.io/" target="_blank" rel="noopener">IP-TV Org</a></kbd></small>
 			</div>
 		</div>
+
+		<div class="row pt-1 pb-3">
+			<div class="col-sm">
+				<small class="text-body-secondary" id="version"></small>
+			</div>
+		</div>
 	</div>
 
 	<script src="https://cdn.jsdelivr.net/npm/hls.js@1.6.16/dist/hls.min.js" integrity="sha384-5E8B0pTlZZJMabWpC0fyYf6OUpe15jJij34BqBAh4NXoHAlLNOjCPRrwtOXOQFAn" crossorigin="anonymous"></script>
 	<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.8/dist/js/bootstrap.bundle.min.js" integrity="sha384-FKyoEForCGlyvwx9Hj09JcYn3nv7wiPVlz7YYwJrWVcXK/BmnVDxM+D2scQbITxI" crossorigin="anonymous"></script>
 	<script>
+		document.getElementById('version').textContent = 'Teleweb ' + TelewebVersion;
+
 		const video = document.getElementById('video');
 		const senderNamen = Object.keys(SenderListe);
 		let senderIndex = 0;
