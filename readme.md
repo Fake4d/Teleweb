@@ -24,10 +24,10 @@ Steht eine Tastatur zur Verfügung, lässt sich zwischen den Sendern mit den Tas
 
 Die meisten Streams der Öffentlich-Rechtlichen sind **geo-gesperrt**: Außerhalb Deutschlands antworten sie mit „403 Access Denied“ oder leiten auf eine internationale Variante mit eingeschränktem Programm um (z.&nbsp;B. ARD, NDR, WDR, BR, HR, KiKa). Die Bundestag-Streams laufen nur während der Sitzungen und liegen derzeit nur in 480p vor.
 
-Die Senderliste steht als einfaches Objekt am Anfang der `index.html` und lässt sich dort direkt bearbeiten; die Reihenfolge der Einträge bestimmt die Reihenfolge der Knöpfe und der Zapp-Reihenfolge. Weitere Streams findet man z.&nbsp;B. bei [iptv-org](https://iptv-org.github.io/).
+Die Senderliste steht als einfaches Objekt am Anfang der `index.html` und lässt sich dort direkt bearbeiten; die Reihenfolge der Einträge bestimmt die Reihenfolge der Knöpfe und der Zapp-Reihenfolge. Ein Sender kann statt einer URL auch eine Liste von URLs haben: Fällt die erste Quelle aus, probiert der Player automatisch die nächste. DELUXE DANCE und DELUXE RAP nutzen so zuerst die deutschen Samsung-TV-Plus-Streams und dann die 3Q-SDN-Streams, die je nach Standort nicht erreichbar sind. Weitere Streams findet man z.&nbsp;B. bei [iptv-org](https://iptv-org.github.io/).
 
 #### Sender prüfen
-`./sender-check.sh` ruft jede Stream-URL aus der `index.html` per `curl` ab und meldet den HTTP-Status. Ein 403 ist wegen der Geo-Sperren nur aus Deutschland heraus aussagekräftig. Das Skript endet mit Exit-Code 1, sobald ein Stream nicht mit 200 antwortet.
+`./sender-check.sh` ruft jede Stream-URL aus der `index.html` per `curl` ab (bei mehreren Quellen je Sender alle) und meldet den HTTP-Status. Ein 403 ist wegen der Geo-Sperren nur aus Deutschland heraus aussagekräftig. Das Skript endet mit Exit-Code 1, sobald ein Stream nicht mit 200 antwortet.
 
 ### Technik
 Eine einzelne `index.html` ohne Build-Schritt: [Bootstrap 5](https://getbootstrap.com/) und [hls.js](https://github.com/video-dev/hls.js) kommen per CDN (versionsgepinnt, mit Subresource Integrity), die Bedienlogik ist reines JavaScript ohne weitere Abhängigkeiten. Safari und iOS nutzen ihre native HLS-Wiedergabe, alle anderen Browser hls.js. Ist keiner der beiden Wege verfügbar (etwa weil das CDN nicht erreichbar ist), zeigt die Seite einen Hinweis statt still zu scheitern.
