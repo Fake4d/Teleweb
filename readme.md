@@ -19,7 +19,8 @@ Steht eine Tastatur zur Verfügung, lässt sich zwischen den Sendern mit den Tas
 | --- | --- |
 | Öffentlich-Rechtliche | ARD, ZDF, ARTE, Phoenix, 3sat, RBB, NDR, WDR, BR, HR, MDR, SR, SWR, KiKa, alpha, Tagesschau24, ZDFinfo, ZDFneo |
 | Auslandssender | DW Englisch, CBS News |
-| Sonstige | DasDing, DELUXE MUSIC, Bundestag 1+2, muenchen.tv, ErzTV |
+| Musik | DasDing, DELUXE MUSIC, DELUXE DANCE, DELUXE RAP |
+| Sonstige | Bundestag 1+2, muenchen.tv, ErzTV |
 
 Die meisten Streams der Öffentlich-Rechtlichen sind **geo-gesperrt**: Außerhalb Deutschlands antworten sie mit „403 Access Denied“ oder leiten auf eine internationale Variante mit eingeschränktem Programm um (z.&nbsp;B. ARD, NDR, WDR, BR, HR, KiKa). Die Bundestag-Streams laufen nur während der Sitzungen und liegen derzeit nur in 480p vor.
 
