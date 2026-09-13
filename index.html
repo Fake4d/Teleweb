@@ -2,31 +2,35 @@
 <html lang="de" data-bs-theme="dark">
 <head>
 	<script>
-		const TelewebVersion = 'Refresh 2026 · Stand 08.07.2026';
+		const TelewebVersion = 'Refresh 2026 · Stand 13.09.2026';
 
-		// edit for sort order
+		// Reihenfolge = Reihenfolge der Knöpfe und der Zapp-Reihenfolge (+/-).
+		// Viele Streams der Öffentlich-Rechtlichen sind geo-gesperrt und liefern außerhalb
+		// Deutschlands 403 oder leiten auf eine internationale Variante um.
 		const SenderListe = {
-			'ARD' : 'https://derste247liveint.akamaized.net/hls/live/662735/daserste_int/master.m3u8',
+			'ARD' : 'https://daserste-live.ard-mcdn.de/daserste/live/hls/de/master.m3u8',
 			'ZDF' : 'https://zdf-hls-15.akamaized.net/hls/live/2016498/de/veryhigh/master.m3u8',
 			'ARTE' : 'https://artesimulcast.akamaized.net/hls/live/2030993/artelive_de/master.m3u8',
 			'Phoenix' : 'https://zdf-hls-19.akamaized.net/hls/live/2016502/de/veryhigh/master.m3u8',
 			'3sat' : 'https://zdf-hls-18.akamaized.net/hls/live/2016501/dach/high/master.m3u8',
 			'RBB' : 'https://rbb-hls-berlin.akamaized.net/hls/live/2017824/rbb_berlin/index.m3u8',
 			'NDR' : 'https://mcdn.ndr.de/ndr/hls/ndr_fs/ndr_nds/master.m3u8',
-			'WDR' : 'https://wdrfs247.akamaized.net/hls/live/681509/wdr_msl4_fs247/index.m3u8',
+			'WDR' : 'https://wdr-live.ard-mcdn.de/wdr/live/hls/de/master.m3u8',
 			'BR' : 'https://mcdn.br.de/br/fs/bfs_sued/hls/de/master.m3u8',
 			'HR' : 'https://hrhlsde.akamaized.net/hls/live/2024526/hrhlsde/index.m3u8',
 			'MDR' : 'https://mdrtvsnhls.akamaized.net/hls/live/2016928/mdrtvsn/master.m3u8',
+			'SR' : 'https://srfs.akamaized.net/hls/live/689649/srfsgeo/index.m3u8',
 			'SWR' : 'https://swrbwd-hls.akamaized.net/hls/live/2018672/swrbwd/master.m3u8',
 			'KiKa' : 'https://kikageohls.akamaized.net/hls/live/2022693/livetvkika_de/master.m3u8',
 			'alpha' : 'https://mcdn.br.de/br/fs/ard_alpha/hls/de/master.m3u8',
 			'Tagesschau24' : 'https://tagesschau.akamaized.net/hls/live/2020115/tagesschau/tagesschau_1/master.m3u8',
 			'ZDFinfo' : 'https://zdf-hls-17.akamaized.net/hls/live/2016500/de/high/master.m3u8',
 			'ZDFneo' : 'https://zdf-hls-16.akamaized.net/hls/live/2016499/de/high/master.m3u8',
-			'DW Plus' : 'https://dwamdstream110.akamaized.net/hls/live/2017971/dwstream110/index.m3u8',
 			'DW Englisch' : 'https://dwamdstream102.akamaized.net/hls/live/2015525/dwstream102/index.m3u8',
 			'DasDing' : 'https://swrdasdingvr-hls.akamaized.net/hls/live/2018681/dasdingvr/master.m3u8',
 			'DELUXE MUSIC' : 'https://sdn-global-live-streaming-packager-cache.3qsdn.com/13456/13456_264_live.m3u8',
+			'DELUXE DANCE' : 'https://sdn-global-live-streaming-packager-cache.3qsdn.com/64733/64733_264_live.m3u8',
+			'DELUXE RAP' : 'https://sdn-global-live-streaming-packager-cache.3qsdn.com/65183/65183_264_live.m3u8',
 			'CBS News' : 'https://cbsn-us.cbsnstream.cbsnews.com/out/v1/55a8648e8f134e82a470f83d562deeca/master.m3u8',
 			'Bundestag 1' : 'https://cldf-hlsgw.r53.cdn.tv1.eu/1000153copo/hk1.m3u8',
 			'Bundestag 2' : 'https://cldf-hlsgw.r53.cdn.tv1.eu/1000153copo/hk2.m3u8',
@@ -37,6 +41,7 @@
 
 	<meta charset="utf-8">
 	<meta name="viewport" content="width=device-width, initial-scale=1">
+	<meta name="description" content="Teleweb – schlichter Zugriff auf das Live-Programm der Öffentlich-Rechtlichen und einiger frei empfangbarer Sender.">
 	<meta name="theme-color" content="#000000">
 	<meta name="mobile-web-app-capable" content="yes">
 	<meta name="apple-mobile-web-app-capable" content="yes">
@@ -72,6 +77,14 @@
 			</div>
 		</div>
 
+		<div class="row pt-2" id="hinweis" hidden>
+			<div class="col-sm">
+				<div class="alert alert-warning mb-0" role="alert">
+					Dieser Browser kann keine HLS-Livestreams wiedergeben. Bitte einen aktuellen Chrome, Edge, Firefox oder Safari verwenden.
+				</div>
+			</div>
+		</div>
+
 		<div class="row pt-4">
 			<div class="col-auto me-auto d-none d-sm-block">
 				<button class="btn btn-lg btn-primary" type="button" data-bs-toggle="collapse" data-bs-target="#SenderPanel" aria-expanded="false" aria-controls="SenderPanel">
@@ -81,7 +94,7 @@
 
 			<div class="col-auto ms-auto">
 				<div class="btn-group btn-group-lg" role="group" aria-label="Steuerung">
-					<button id="mute-video" type="button" class="btn btn-secondary" aria-label="Ton ein/aus">
+					<button id="mute-video" type="button" class="btn btn-secondary" aria-label="Ton ein/aus" title="Ton ein/aus (M)">
 						<svg xmlns="http://www.w3.org/2000/svg" fill="currentColor" viewBox="0 0 16 16" id="symbol-leise">
 							<path d="M6.717 3.55A.5.5 0 0 1 7 4v8a.5.5 0 0 1-.812.39L3.825 10.5H1.5A.5.5 0 0 1 1 10V6a.5.5 0 0 1 .5-.5h2.325l2.363-1.89a.5.5 0 0 1 .529-.06m7.137 2.096a.5.5 0 0 1 0 .708L12.207 8l1.647 1.646a.5.5 0 0 1-.708.708L11.5 8.707l-1.646 1.647a.5.5 0 0 1-.708-.708L10.793 8 9.146 6.354a.5.5 0 1 1 .708-.708L11.5 7.293l1.646-1.647a.5.5 0 0 1 .708 0"/>
 						</svg>
@@ -91,18 +104,18 @@
 							<path d="M8.707 11.182A4.5 4.5 0 0 0 10.025 8a4.5 4.5 0 0 0-1.318-3.182L8 5.525A3.5 3.5 0 0 1 9.025 8 3.5 3.5 0 0 1 8 10.475zM6.717 3.55A.5.5 0 0 1 7 4v8a.5.5 0 0 1-.812.39L3.825 10.5H1.5A.5.5 0 0 1 1 10V6a.5.5 0 0 1 .5-.5h2.325l2.363-1.89a.5.5 0 0 1 .529-.06"/>
 						</svg>
 					</button>
-					<button id="runter" type="button" class="btn btn-primary" aria-label="Sender zurück">
+					<button id="runter" type="button" class="btn btn-primary" aria-label="Sender zurück" title="Sender zurück (-)">
 						<svg xmlns="http://www.w3.org/2000/svg" fill="currentColor" viewBox="0 0 16 16">
 							<path fill-rule="evenodd" d="M7.646 4.646a.5.5 0 0 1 .708 0l6 6a.5.5 0 0 1-.708.708L8 5.707l-5.646 5.647a.5.5 0 0 1-.708-.708z"/>
 						</svg>
 					</button>
-					<button id="hoch" type="button" class="btn btn-primary" aria-label="Sender weiter">
+					<button id="hoch" type="button" class="btn btn-primary" aria-label="Sender weiter" title="Sender weiter (+)">
 						<svg xmlns="http://www.w3.org/2000/svg" fill="currentColor" viewBox="0 0 16 16">
 							<path fill-rule="evenodd" d="M1.646 4.646a.5.5 0 0 1 .708 0L8 10.293l5.646-5.647a.5.5 0 0 1 .708.708l-6 6a.5.5 0 0 1-.708 0l-6-6a.5.5 0 0 1 0-.708"/>
 						</svg>
 					</button>
 				</div>
-				<button id="PiPButton" type="button" class="btn btn-lg btn-primary" aria-label="Bild-in-Bild">
+				<button id="PiPButton" type="button" class="btn btn-lg btn-primary" aria-label="Bild-in-Bild" title="Bild-in-Bild">
 					<svg xmlns="http://www.w3.org/2000/svg" fill="currentColor" viewBox="0 0 16 16">
 						<path d="M0 3.5A1.5 1.5 0 0 1 1.5 2h13A1.5 1.5 0 0 1 16 3.5v9a1.5 1.5 0 0 1-1.5 1.5h-13A1.5 1.5 0 0 1 0 12.5zM1.5 3a.5.5 0 0 0-.5.5v9a.5.5 0 0 0 .5.5h13a.5.5 0 0 0 .5-.5v-9a.5.5 0 0 0-.5-.5z"/>
 						<path d="M8 8.5a.5.5 0 0 1 .5-.5h5a.5.5 0 0 1 .5.5v3a.5.5 0 0 1-.5.5h-5a.5.5 0 0 1-.5-.5z"/>
@@ -110,7 +123,7 @@
 				</button>
 			</div>
 			<div class="col-1 d-none d-lg-block">
-				<button id="fullscreen" type="button" class="btn btn-lg btn-primary" aria-label="Vollbild">
+				<button id="fullscreen" type="button" class="btn btn-lg btn-primary" aria-label="Vollbild" title="Vollbild (F)">
 					<svg xmlns="http://www.w3.org/2000/svg" fill="currentColor" viewBox="0 0 16 16">
 						<path d="M1.5 1a.5.5 0 0 0-.5.5v4a.5.5 0 0 1-1 0v-4A1.5 1.5 0 0 1 1.5 0h4a.5.5 0 0 1 0 1zM10 .5a.5.5 0 0 1 .5-.5h4A1.5 1.5 0 0 1 16 1.5v4a.5.5 0 0 1-1 0v-4a.5.5 0 0 0-.5-.5h-4a.5.5 0 0 1-.5-.5M.5 10a.5.5 0 0 1 .5.5v4a.5.5 0 0 0 .5.5h4a.5.5 0 0 1 0 1h-4A1.5 1.5 0 0 1 0 14.5v-4a.5.5 0 0 1 .5-.5m15 0a.5.5 0 0 1 .5.5v4a1.5 1.5 0 0 1-1.5 1.5h-4a.5.5 0 0 1 0-1h4a.5.5 0 0 0 .5-.5v-4a.5.5 0 0 1 .5-.5"/>
 					</svg>
@@ -122,7 +135,7 @@
 			<div class="col-sm">
 				<div class="collapse" id="SenderPanel">
 					<div class="card bg-secondary">
-						<div class="card-body bg-dark" id="sender"></div>
+						<div class="card-body bg-dark" id="sender" role="group" aria-label="Senderliste"></div>
 					</div>
 				</div>
 			</div>
@@ -141,24 +154,40 @@
 		</div>
 	</div>
 
-	<script src="https://cdn.jsdelivr.net/npm/hls.js@1.6.16/dist/hls.min.js" integrity="sha384-5E8B0pTlZZJMabWpC0fyYf6OUpe15jJij34BqBAh4NXoHAlLNOjCPRrwtOXOQFAn" crossorigin="anonymous"></script>
+	<script src="https://cdn.jsdelivr.net/npm/hls.js@1.7.3/dist/hls.min.js" integrity="sha384-cciJ0zi8d1uMKC2zJd7jvPY4HQt7W4ByUI/FlMkltvBi31aW61rcpVBhpmW8/NwX" crossorigin="anonymous"></script>
 	<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.8/dist/js/bootstrap.bundle.min.js" integrity="sha384-FKyoEForCGlyvwx9Hj09JcYn3nv7wiPVlz7YYwJrWVcXK/BmnVDxM+D2scQbITxI" crossorigin="anonymous"></script>
 	<script>
 		document.getElementById('version').textContent = 'Teleweb ' + TelewebVersion;
 
 		const video = document.getElementById('video');
+		const senderPanel = document.getElementById('sender');
+		const senderKnoepfe = [document.getElementById('senderknopf'), document.getElementById('senderknopf-sm')];
 		const senderNamen = Object.keys(SenderListe);
 		let senderIndex = 0;
 		let hls = null;
 
+		// Wiedergabeweg: hls.js (MSE) oder natives HLS (Safari / iOS). Falls hls.js nicht
+		// geladen werden konnte (CDN nicht erreichbar), bleibt der native Weg übrig.
+		const hlsJsVerfuegbar = typeof Hls !== 'undefined' && Hls.isSupported();
+		const nativesHls = video.canPlayType('application/vnd.apple.mpegurl') !== '';
+		if (!hlsJsVerfuegbar && !nativesHls) {
+			document.getElementById('hinweis').hidden = false;
+		}
+
+		// localStorage kann fehlen oder gesperrt sein (privater Modus, Cookies blockiert)
+		const speicher = {
+			lesen(schluessel) { try { return localStorage.getItem(schluessel); } catch { return null; } },
+			schreiben(schluessel, wert) { try { localStorage.setItem(schluessel, wert); } catch { /* ignorieren */ } }
+		};
+
 		// Senderknöpfe erzeugen
-		const senderPanel = document.getElementById('sender');
 		senderNamen.forEach((name, i) => {
 			const knopf = document.createElement('button');
 			knopf.type = 'button';
 			knopf.className = 'btn btn-primary btn-space me-1';
 			knopf.textContent = name;
 			knopf.dataset.index = i;
+			knopf.setAttribute('aria-pressed', 'false');
 			knopf.addEventListener('click', () => playTV(i));
 			senderPanel.append(knopf, ' ');
 		});
@@ -173,27 +202,31 @@
 				hls = null;
 			}
 
-			if (Hls.isSupported()) {
-				hls = new Hls();
-				hls.loadSource(url);
-				hls.attachMedia(video);
-				hls.on(Hls.Events.MANIFEST_PARSED, () => video.play().catch(() => {}));
-				hls.on(Hls.Events.ERROR, (event, data) => {
-					if (!data.fatal) return;
+			if (hlsJsVerfuegbar) {
+				const instanz = new Hls();
+				hls = instanz;
+				instanz.on(Hls.Events.MANIFEST_PARSED, () => video.play().catch(() => {}));
+				instanz.on(Hls.Events.ERROR, (event, data) => {
+					// Nur die aktuell laufende Instanz behandeln, keine Nachzügler eines alten Senders
+					if (!data.fatal || instanz !== hls) return;
 					if (data.type === Hls.ErrorTypes.NETWORK_ERROR) {
-						hls.startLoad();
+						instanz.startLoad();
 					} else if (data.type === Hls.ErrorTypes.MEDIA_ERROR) {
-						hls.recoverMediaError();
+						instanz.recoverMediaError();
+					} else {
+						instanz.destroy();
+						hls = null;
 					}
 				});
-			} else if (video.canPlayType('application/vnd.apple.mpegurl')) {
-				// natives HLS (Safari / iOS)
+				instanz.loadSource(url);
+				instanz.attachMedia(video);
+			} else if (nativesHls) {
 				video.src = url;
-				video.addEventListener('canplay', () => video.play().catch(() => {}), { once: true });
+				video.play().catch(() => {});
 			}
 
 			lauft(name);
-			localStorage.setItem('teleweb-sender', name);
+			speicher.schreiben('teleweb-sender', name);
 			if ('mediaSession' in navigator) {
 				navigator.mediaSession.metadata = new MediaMetadata({ title: name, artist: 'Teleweb' });
 			}
@@ -201,10 +234,12 @@
 
 		function lauft(name) {
 			for (const knopf of senderPanel.children) {
-				knopf.classList.toggle('active', knopf.textContent === name);
+				const aktiv = Number(knopf.dataset.index) === senderIndex;
+				knopf.classList.toggle('active', aktiv);
+				knopf.setAttribute('aria-pressed', String(aktiv));
 			}
-			document.getElementById('senderknopf').textContent = name;
-			document.getElementById('senderknopf-sm').textContent = name;
+			senderKnoepfe.forEach((knopf) => { knopf.textContent = name; });
+			document.title = name + ' – Teleweb';
 		}
 
 		function hochschalten() { playTV(senderIndex + 1); }
@@ -212,11 +247,21 @@
 
 		function leise() {
 			video.muted = !video.muted;
-			document.getElementById('symbol-leise').hidden = !video.muted;
-			document.getElementById('symbol-laut').hidden = video.muted;
-			document.getElementById('mute-video').classList.toggle('btn-primary', !video.muted);
-			document.getElementById('mute-video').classList.toggle('btn-secondary', video.muted);
+			tonAnzeigen();
 		}
+
+		// Ton-Anzeige immer aus dem Videozustand ableiten, damit sie auch stimmt,
+		// wenn über die nativen Player-Bedienelemente stummgeschaltet wird.
+		function tonAnzeigen() {
+			const stumm = video.muted;
+			document.getElementById('symbol-leise').hidden = !stumm;
+			document.getElementById('symbol-laut').hidden = stumm;
+			const knopf = document.getElementById('mute-video');
+			knopf.classList.toggle('btn-primary', !stumm);
+			knopf.classList.toggle('btn-secondary', stumm);
+		}
+		video.addEventListener('volumechange', tonAnzeigen);
+		tonAnzeigen();
 
 		function vollbild() {
 			if (document.fullscreenElement || document.webkitFullscreenElement) {
@@ -238,6 +283,8 @@
 		document.getElementById('fullscreen').addEventListener('click', vollbild);
 
 		document.addEventListener('keydown', (e) => {
+			// Browser-Kürzel wie Strg+F / Cmd+M nicht abfangen
+			if (e.ctrlKey || e.metaKey || e.altKey) return;
 			switch (e.key) {
 				case '+': hochschalten(); break;
 				case '-': runterschalten(); break;
@@ -249,6 +296,14 @@
 			}
 		});
 
+		// Medientasten (Tastatur, Kopfhörer, Sperrbildschirm) zappen ebenfalls
+		if ('mediaSession' in navigator) {
+			try {
+				navigator.mediaSession.setActionHandler('nexttrack', hochschalten);
+				navigator.mediaSession.setActionHandler('previoustrack', runterschalten);
+			} catch { /* Aktion vom Browser nicht unterstützt */ }
+		}
+
 		// Bild-in-Bild: Standard-API (Chrome, Edge, Safari 17+) mit WebKit-Fallback (älteres Safari)
 		const pipKnopf = document.getElementById('PiPButton');
 		if (document.pictureInPictureEnabled) {
@@ -256,7 +311,7 @@
 				if (document.pictureInPictureElement) {
 					document.exitPictureInPicture();
 				} else {
-					video.requestPictureInPicture();
+					video.requestPictureInPicture().catch(() => {});
 				}
 			});
 		} else if (video.webkitSupportsPresentationMode && typeof video.webkitSetPresentationMode === 'function') {
@@ -268,7 +323,7 @@
 		}
 
 		// letzten Sender wiederherstellen
-		const letzterSender = senderNamen.indexOf(localStorage.getItem('teleweb-sender'));
+		const letzterSender = senderNamen.indexOf(speicher.lesen('teleweb-sender'));
 		playTV(letzterSender >= 0 ? letzterSender : 0);
 	</script>
 </body>
