@@ -2,7 +2,7 @@
 Teleweb ist eine schlichte Internetseite, die den einfachen (Mobilgeräte-optimierten) Zugriff auf das Live-Programm der Öffentlich-Rechtlichen und eine Handvoll frei empfangbarer Privat- und Auslandssender ermöglicht. Die Bild-in-Bild-Funktion steht in Chrome, Edge und Safari (iPad/Mac) zur Verfügung. Der zuletzt gesehene Sender wird gemerkt und beim nächsten Besuch automatisch wieder gestartet.
 
 ### Demo
-- Eine aktuelle Live-Version lässt sich auf [https://telemat.1mb.site/](https://telemat.1mb.site/) begutachten.
+- Eine aktuelle Live-Version lässt sich auf [https://christian-grafe.de/tv](https://christian-grafe.de/tv) begutachten.
 
 ![](pics/screen-teleweb.png)
 
